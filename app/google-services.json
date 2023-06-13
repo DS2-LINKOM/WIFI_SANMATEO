@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "581848678880",
+    "project_id": "sanmateo-4f70f",
+    "storage_bucket": "sanmateo-4f70f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581848678880:android:52fd5b1a3dcd74bb796b85",
+        "android_client_info": {
+          "package_name": "mx.linkom.caseta_sanmateo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "581848678880-a6l54mak4li5h5ins2qig34o6s6ivetv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBLGa4H2lSDWAOlY9K-POtLideAyH1ZI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "581848678880-a6l54mak4li5h5ins2qig34o6s6ivetv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581848678880:android:4bbb1428b6ccd97b796b85",
+        "android_client_info": {
+          "package_name": "mx.linkom.wifi_sanmateo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "581848678880-a6l54mak4li5h5ins2qig34o6s6ivetv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBLGa4H2lSDWAOlY9K-POtLideAyH1ZI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "581848678880-a6l54mak4li5h5ins2qig34o6s6ivetv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

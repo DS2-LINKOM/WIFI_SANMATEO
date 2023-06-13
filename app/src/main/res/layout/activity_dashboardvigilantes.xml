@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/wifi_background"
+    android:paddingRight="150dp"
+    android:paddingLeft="150dp">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:src="@drawable/wifi_encabezado"
+                android:scaleType="fitXY"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+
+                    <ImageView
+                        android:layout_width="44dp"
+                        android:layout_height="28dp"
+                        android:src="@drawable/menu"
+                        android:onClick="showPopup"
+                        />
+                    <TextView
+                        android:id="@+id/nombreResi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="22dp"
+                        android:fontFamily="@font/c_negrita"
+                        android:text="Residencial"
+                        android:textColor="@color/white"
+                        android:textSize="15dp"
+
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp">
+
+
+            <TextView
+                android:id="@+id/Entradas_t"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="22dp"
+                android:textColor="#ffffff"
+                android:text="Entradas:"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/c_negrita"
+                />
+
+            <TextView
+                android:id="@+id/setEntradas"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="22dp"
+                android:textColor="#ffffff"
+                android:text="0"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/c_negrita"
+                />
+
+            <TextView
+                android:id="@+id/Permancen_t"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="22dp"
+                android:textColor="#ffffff"
+                android:text="Perman.:"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/c_negrita"
+                />
+
+            <TextView
+                android:id="@+id/setPermanecen"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="22dp"
+                android:textColor="#ffffff"
+                android:text="0"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/c_negrita"
+                />
+            <TextView
+                android:id="@+id/Salidas_t"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="22dp"
+                android:textColor="#ffffff"
+                android:text="Salidas:"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/c_negrita"
+                />
+
+            <TextView
+                android:id="@+id/setSalidas"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="22dp"
+                android:textColor="#ffffff"
+                android:text="0"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:fontFamily="@font/c_negrita"
+                />
+
+
+        </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp">
+
+
+                    <TextView
+                        android:id="@+id/entradas"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="22dp"
+                        android:textColor="#ffffff"
+                        android:text="Entradas"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/c_negrita"
+                        />
+
+                    <TextView
+                        android:id="@+id/salidas"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="22dp"
+                        android:textColor="#ffffff"
+                        android:text="Salidas"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/c_negrita"
+                        />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp">
+
+
+                    <GridView
+                        android:id="@+id/gridList"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/wifi_background"
+                        android:numColumns="1"
+                        android:gravity="center"
+                        android:paddingLeft="25dp"
+                        android:paddingRight="0dp"
+                        ></GridView>
+
+                    <GridView
+                        android:id="@+id/gridList2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/wifi_background"
+                        android:gravity="center"
+                        android:paddingLeft="25dp"
+                        android:paddingRight="0dp"
+                        ></GridView>
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+</LinearLayout>

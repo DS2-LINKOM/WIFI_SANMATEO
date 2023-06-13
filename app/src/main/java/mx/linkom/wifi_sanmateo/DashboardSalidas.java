@@ -231,7 +231,7 @@ public class DashboardSalidas extends Menu implements View.OnClickListener {
 
     public void menu() {
 
-        String URL = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SANMATEO/menu.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SM/menu.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 

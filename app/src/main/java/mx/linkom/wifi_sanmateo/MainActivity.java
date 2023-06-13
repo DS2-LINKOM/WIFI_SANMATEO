@@ -273,7 +273,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         } else {
 
-            String URL = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SANMATEO/pin.php";
+            String URL = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SM/pin.php";
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -327,7 +327,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void Residencial() {
 
-        String URL = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SANMATEO/residencial.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SM/residencial.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
@@ -376,7 +376,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
 
 
-            String URL = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SANMATEO/session.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+            String URL = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SM/session.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 
@@ -460,7 +460,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void Notificacion() {
 
 
-        String URL = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SANMATEO/plumas.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+        String URL = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SM/plumas.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
 

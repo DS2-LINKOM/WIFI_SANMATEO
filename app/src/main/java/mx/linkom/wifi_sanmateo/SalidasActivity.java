@@ -64,7 +64,7 @@ public class SalidasActivity extends mx.linkom.wifi_sanmateo.Menu2{
 
     public void Placas(){
 
-        String url = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SANMATEO/vst_reg_4.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
+        String url = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SM/vst_reg_4.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {

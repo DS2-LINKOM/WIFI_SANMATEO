@@ -273,7 +273,7 @@ public class EscaneoVisitaSalidaActivity extends mx.linkom.wifi_sanmateo.Menu im
         String sl=a[1];
 
         if((pl+sl).equals("AR")){
-            String url = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SANMATEO/auto1.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+            String url = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SM/auto1.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
 
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -317,7 +317,7 @@ public class EscaneoVisitaSalidaActivity extends mx.linkom.wifi_sanmateo.Menu im
             requestQueue.add(stringRequest);
         }else {
 
-            String url = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SANMATEO/vst_php1.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
+            String url = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SM/vst_php1.php?bd_name=" + Conf.getBd() + "&bd_user=" + Conf.getBdUsu() + "&bd_pwd=" + Conf.getBdCon();
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 

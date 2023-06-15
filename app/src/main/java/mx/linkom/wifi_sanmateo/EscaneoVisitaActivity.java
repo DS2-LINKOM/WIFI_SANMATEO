@@ -196,7 +196,7 @@ public class EscaneoVisitaActivity extends mx.linkom.wifi_sanmateo.Menu implemen
                 .Builder(this, barcodeDetector)
                 .setRequestedPreviewSize(1800, 1124)
                 .setAutoFocusEnabled(true) //you should add this feature
-                .setFacing(0)
+                .setFacing(1)
                 .build();
 
         // Listener de ciclo de vida de la camara

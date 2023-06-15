@@ -3,24 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="mx.linkom.wifi_sanmateo">
 
-
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <protected-broadcast android:name="android.intent.action.MEDIA_MOUNTED" />
 
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:allowBackup="true"
         android:debuggable="false"
@@ -32,9 +32,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        >
-
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".LimiteVelocidad"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".FotoPlaca"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape"
@@ -45,14 +53,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".ProtectorPantalla"
             android:exported="false"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustPan" />
-
         <activity
             android:name=".CamaraActivity"
             android:label="@string/app_name"
@@ -64,7 +69,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".CamaraActivity2"
             android:label="@string/app_name"
@@ -76,7 +80,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Dashboard"
             android:label="@string/app_name"
@@ -88,7 +91,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".DashboardEntradas"
             android:label="@string/app_name"
@@ -100,7 +102,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".DashboardSalidas"
             android:label="@string/app_name"
@@ -112,7 +113,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".DashboardVigilante"
             android:label="@string/app_name"
@@ -124,7 +124,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".EscaneoVisitaActivity"
             android:label="@string/app_name"
@@ -136,8 +135,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".AccesosActivity"
             android:label="@string/app_name"
@@ -149,9 +146,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
-
         <activity
             android:name=".EscaneoVisitaSalidaActivity"
             android:label="@string/app_name"
@@ -163,8 +157,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".AccesosSalidasActivity"
             android:label="@string/app_name"
@@ -176,8 +168,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".AccesosMultiplesActivity"
             android:label="@string/app_name"
@@ -189,8 +179,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".AccesosMultiplesSalidasActivity"
             android:label="@string/app_name"
@@ -202,7 +190,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AccesoRegistroActivity"
             android:label="@string/app_name"
@@ -214,7 +201,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AccesoSalidaRegistroActivity"
             android:label="@string/app_name"
@@ -226,7 +212,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".SalidasActivity"
             android:label="@string/app_name"
@@ -238,7 +223,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".PreEntradasActivity"
             android:label="@string/app_name"
@@ -250,7 +234,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".EntradasActivity"
             android:label="@string/app_name"
@@ -262,7 +245,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".RegistroPlumasEntradasActivity"
             android:label="@string/app_name"
@@ -274,7 +256,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".RegistroPlumasSalidasActivity"
             android:label="@string/app_name"
@@ -286,7 +267,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".NavegadorActivity"
             android:label="@string/app_name"
@@ -298,7 +278,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ListaGrupalEntradaActivity"
             android:label="@string/app_name"
@@ -310,7 +289,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ListaGrupalSalidaActivity"
             android:label="@string/app_name"
@@ -322,7 +300,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AccesosSalidasGrupalActivity"
             android:label="@string/app_name"
@@ -334,7 +311,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AccesosGrupalActivity"
             android:label="@string/app_name"
@@ -346,7 +322,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AccesoAutosActivity"
             android:label="@string/app_name"
@@ -358,7 +333,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AccesoAutosSalidasActivity"
             android:label="@string/app_name"
@@ -370,7 +344,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".BT_Conexion"
             android:label="@string/app_name"
@@ -382,7 +355,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".BT_Datos"
             android:label="@string/app_name"
@@ -394,7 +366,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".BT_Conexion2"
             android:label="@string/app_name"
@@ -406,7 +377,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MsjCamaraActivity"
             android:label="@string/app_name"
@@ -418,7 +388,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MsjCamaraActivity2"
             android:label="@string/app_name"
@@ -430,9 +399,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
-
 
         <service android:name=".MyFirebaseInstanceIdService">
             <intent-filter>
@@ -452,18 +418,18 @@
             android:required="false" />
 
         <provider
-            android:authorities="mx.linkom.wifi_sanmateo.provider"
             android:name="androidx.core.content.FileProvider"
-            android:grantUriPermissions="true"
-            android:exported="false">
+            android:authorities="mx.linkom.wifi_sanmateo.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
         <provider
-            android:authorities="mx.linkom.wifi_sanmateo"
             android:name=".fotosSegundoPlano.ContentProvider"
-            android:exported="false"/>
+            android:authorities="mx.linkom.wifi_sanmateo"
+            android:exported="false" />
     </application>
 
 </manifest>

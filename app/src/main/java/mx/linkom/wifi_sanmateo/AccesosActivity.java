@@ -322,7 +322,7 @@ public class AccesosActivity extends mx.linkom.wifi_sanmateo.Menu {
     }
 
 
-    public void Registrar_pluma(){
+    /*public void Registrar_pluma(){
 
         String URL = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SM/plumas_registro_1.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -373,11 +373,28 @@ public class AccesosActivity extends mx.linkom.wifi_sanmateo.Menu {
             }
         };
         requestQueue.add(stringRequest);
+    }*/
+
+
+    public void Registrar_pluma() {
+
+        rlVista.setVisibility(View.GONE);
+        rlDenegado.setVisibility(View.GONE);
+        rlPermitido.setVisibility(View.VISIBLE);
+        try {
+            tvMensaje2.setText(ja1.getString(7).trim());
+            tvMensaje4.setText(ja3.getString(0).trim());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        mp.start();
+        esperarParaCambio2(tiempo2);
+
     }
 
 
-
-    public void Registrar(){
+    /*public void Registrar(){
 
             String URL = "https://sanmateoresidencial.mx/plataforma/casetaV2/controlador/WIFI_SM/vst_php5.php?bd_name="+Conf.getBd()+"&bd_user="+Conf.getBdUsu()+"&bd_pwd="+Conf.getBdCon();
             RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -451,7 +468,7 @@ public class AccesosActivity extends mx.linkom.wifi_sanmateo.Menu {
                 }
             };
             requestQueue.add(stringRequest);
-        }
+        }*/
 
     public void esperarParaCambio(int milisegundos) {
         Handler handler = new Handler();
@@ -470,6 +487,25 @@ public class AccesosActivity extends mx.linkom.wifi_sanmateo.Menu {
         handler.postDelayed(new Runnable() {
             public void run() {
                 Intent intent = new Intent(getApplicationContext(), CamaraActivity.class);
+                try {
+                    intent.putExtra("id_residencial", Conf.getResid().trim());
+                    intent.putExtra("id_visita", ja1.getString(0).trim());
+                    intent.putExtra("guardia_de_entrada", Conf.getUsu().trim());
+                    intent.putExtra("usuario", ja2.getString(1).trim() + " " + ja2.getString(2).trim() + " " + ja2.getString(3).trim());
+                    intent.putExtra("token", ja2.getString(5).trim());
+                    intent.putExtra("correo", ja2.getString(6).trim());
+                    intent.putExtra("visita", ja1.getString(7).trim());
+                    intent.putExtra("pluma_nombre", Conf.getNombrelPluma());
+                    intent.putExtra("pluma_token", Conf.getTokenVigi());
+
+
+                    intent.putExtra("id_vigilante", Conf.getiDVigilante().trim());
+                    intent.putExtra("id_pluma", Conf.getUsu().trim());
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 startActivity(intent);
                 finish();
             }

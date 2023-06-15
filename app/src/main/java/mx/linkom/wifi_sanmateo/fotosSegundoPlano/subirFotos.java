@@ -65,16 +65,8 @@ public class subirFotos extends Service {
 
                         //Solo ejecutar si el servicio no se esta ejecutando
 
-
-                        final String CHANNELID = "Foreground Service ID";
-                        NotificationChannel channel = new NotificationChannel(
-                                CHANNELID,
-                                CHANNELID,
-                                NotificationManager.IMPORTANCE_LOW
-                        );
-
                         notificationManager = NotificationManagerCompat.from(getApplicationContext());
-                        builder = new NotificationCompat.Builder(getApplicationContext(), CHANNELID);
+                        builder = new NotificationCompat.Builder(getApplicationContext(), "upload_photos_id");
                         builder.setContentTitle("Cargando...")
                                 .setContentText("Subiendo imágenes del módulo caseta.")
                                 .setSmallIcon(R.drawable.ic_subir)

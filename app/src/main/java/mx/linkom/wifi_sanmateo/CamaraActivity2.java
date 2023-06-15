@@ -53,6 +53,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import mx.linkom.wifi_sanmateo.deteccionPlacas.DetectarPlaca;
 import mx.linkom.wifi_sanmateo.deteccionPlacas.capturarPlaca;
 import mx.linkom.wifi_sanmateo.fotosSegundoPlano.UrisContentProvider;
 import mx.linkom.wifi_sanmateo.fotosSegundoPlano.subirFotos;
@@ -98,6 +99,8 @@ public class CamaraActivity2 extends mx.linkom.wifi_sanmateo.Menu implements Sur
     private Runnable runnable;
     ScrollView scrollView;
 
+    String i_id_residencial, i_id_visita, i_guardia_de_entrada, i_usuario, i_token, i_correo, i_visita, i_pluma_nombre, i_pluma_token, i_id_vigilante, i_id_pluma;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,8 +139,39 @@ public class CamaraActivity2 extends mx.linkom.wifi_sanmateo.Menu implements Sur
         Botones = (LinearLayout) findViewById(R.id.botones);
         contador = (ImageView) findViewById(R.id.contador);
 
+        Intent intent = getIntent();
+        i_id_residencial = intent.getStringExtra("id_residencial");
+        i_id_visita = intent.getStringExtra("id_visita");
+        i_guardia_de_entrada = intent.getStringExtra("guardia_de_entrada");
+        i_usuario = intent.getStringExtra("usuario");
+        i_token = intent.getStringExtra("token");
+        i_correo = intent.getStringExtra("correo");
+        i_visita = intent.getStringExtra("visita");
+        i_pluma_nombre = intent.getStringExtra("pluma_nombre");
+        i_pluma_token = intent.getStringExtra("pluma_token");
+        i_id_vigilante = intent.getStringExtra("id_vigilante");
+        i_id_pluma = intent.getStringExtra("id_pluma");
+
+        if (i_id_residencial == null || i_id_visita == null || i_guardia_de_entrada == null) {
+            Log.e("INTENT", "No se enviaron los datos");
+            Toast.makeText(this, "No se enviaron los datos", Toast.LENGTH_SHORT).show();
+            i_id_residencial = "";
+            i_id_visita = "";
+            i_guardia_de_entrada = "";
+            i_usuario = "";
+            i_token = "";
+            i_correo = "";
+            i_visita = "";
+            i_pluma_nombre = "";
+            i_pluma_token = "";
+            i_id_vigilante = "";
+            i_id_pluma = "";
+        }
+
         setupSurfaceHolder();
         Visita();
+
+
         contador.setBackgroundResource(R.drawable.loading);
         frameAnimation = (AnimationDrawable) contador.getBackground();
         startBtn.setOnClickListener(new View.OnClickListener() {
@@ -179,7 +213,8 @@ public class CamaraActivity2 extends mx.linkom.wifi_sanmateo.Menu implements Sur
                     public void run() {
                         botonPresionado(siguiente, 0);
 
-                        Registrar();
+                        //Registrar();
+                        esperarParaCambio3(8000);
                     }
                 }, 300);
 
@@ -446,7 +481,7 @@ public class CamaraActivity2 extends mx.linkom.wifi_sanmateo.Menu implements Sur
                     try {
                         ja1 = new JSONArray(response);
 
-                        //Solo ejecutar si el servicio no se esta ejecutando
+                        /*//Solo ejecutar si el servicio no se esta ejecutando
                         if (!servicioPlacas()) {
                             Toast.makeText(CamaraActivity2.this, "El servicio de placas inicio", Toast.LENGTH_SHORT).show();
 
@@ -461,7 +496,7 @@ public class CamaraActivity2 extends mx.linkom.wifi_sanmateo.Menu implements Sur
                             }
                         }else {
                             Toast.makeText(CamaraActivity2.this, "El servici ode placas ya se esta ejecutando", Toast.LENGTH_SHORT).show();
-                        }
+                        }*/
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -515,7 +550,7 @@ public class CamaraActivity2 extends mx.linkom.wifi_sanmateo.Menu implements Sur
     }
 
     private void startCamera() {
-        camera = Camera.open(0);
+        camera = Camera.open(1);
         camera.setDisplayOrientation(0);
 
         try {
@@ -584,10 +619,23 @@ public class CamaraActivity2 extends mx.linkom.wifi_sanmateo.Menu implements Sur
             uri_img = FileProvider.getUriForFile(getApplicationContext(), getApplicationContext().getPackageName() + ".provider", foto);
 
             bitmap = BitmapFactory.decodeFile(getApplicationContext().getExternalFilesDir(null) + "/" + nombreFoto);
+
+            Bitmap foto2 = DetectarPlaca.fechaHoraFoto(bitmap);
+            FileOutputStream fos = null;
+
+            try {
+                fos = new FileOutputStream(rutaImagen);
+                foto2.compress(Bitmap.CompressFormat.JPEG, 100, fos); // compress and save as JPEG
+                fos.flush();
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             surfaceView.setVisibility(View.GONE);
             Botones.setVisibility(View.VISIBLE);
             view1.setVisibility(View.VISIBLE);
-            view1.setImageBitmap(bitmap);
+            view1.setImageBitmap(foto2);
 //                        Toast.makeText(CamaraActivity2.this, "Picture Saved: " + "ine", Toast.LENGTH_LONG).show();
             mp3.start();
 
@@ -695,8 +743,36 @@ public class CamaraActivity2 extends mx.linkom.wifi_sanmateo.Menu implements Sur
 //        });
 //    }
 
-
     public void esperarParaCambio3(int milisegundos) {
+
+        mp3.stop();
+
+        Intent intent = new Intent(CamaraActivity2.this, FotoPlaca.class);
+        try {
+            intent.putExtra("id_residencial", Conf.getResid().trim());
+            intent.putExtra("id_visita", ja1.getString(0).trim());
+            intent.putExtra("foto1", ja1.getString(0) + "_" + anio + mes + dia);
+            intent.putExtra("rutafoto1", rutaImagen);
+
+
+            intent.putExtra("guardia_de_entrada", i_guardia_de_entrada);
+            intent.putExtra("usuario", i_usuario);
+            intent.putExtra("token", i_token);
+            intent.putExtra("correo", i_correo);
+            intent.putExtra("visita", i_visita);
+            intent.putExtra("pluma_nombre", i_pluma_nombre);
+            intent.putExtra("pluma_token", i_pluma_token);
+
+
+            intent.putExtra("id_vigilante", i_id_vigilante);
+            intent.putExtra("id_pluma", i_id_pluma);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        startActivity(intent);
+    }
+
+    /*public void esperarParaCambio3(int milisegundos) {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
@@ -704,7 +780,7 @@ public class CamaraActivity2 extends mx.linkom.wifi_sanmateo.Menu implements Sur
                 //EnviarBT();
             }
         }, milisegundos);
-    }
+    }*/
 //    public void EnviarBT2() {
 //         Toast.makeText(CamaraActivity2.this, "Registro Exitoso", Toast.LENGTH_LONG).show();
 //        Intent intent = new Intent(getApplicationContext(), DashboardEntradas.class);

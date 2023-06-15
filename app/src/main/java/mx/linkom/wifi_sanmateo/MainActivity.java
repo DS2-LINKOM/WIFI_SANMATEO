@@ -1,11 +1,14 @@
 package mx.linkom.wifi_sanmateo;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -398,6 +401,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             Global.TIPO_U = ja1.getString(6);
 
                             //$tipoGuardia = array(array(0, 'Entrada'), array(1, 'Salida'), array(2, 'Súper Usuario'),array(3, 'Recepcionista'),array(4, 'Vigilante'));
+
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                CharSequence channelName = "LINK WIFI SAN MATEO";
+                                String channelDescription = "Subir fotografías";
+                                int importance = NotificationManager.IMPORTANCE_DEFAULT;
+                                NotificationChannel channel = new NotificationChannel("upload_photos_id", channelName, importance);
+                                channel.setDescription(channelDescription);
+                                channel.enableVibration(true); // Enable vibration for this channel
+
+                                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                                notificationManager.createNotificationChannel(channel);
+                            }
 
 
                             if (Conf.getTipoUsuario().equals("0") || Conf.getTipoUsuario().equals("1")) {

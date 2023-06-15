@@ -49,9 +49,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import mx.linkom.wifi_sanmateo.deteccionPlacas.DetectarPlaca;
 import mx.linkom.wifi_sanmateo.deteccionPlacas.capturarPlaca;
 import mx.linkom.wifi_sanmateo.fotosSegundoPlano.UrisContentProvider;
 import mx.linkom.wifi_sanmateo.fotosSegundoPlano.subirFotos;
@@ -92,8 +94,8 @@ public class CamaraActivity extends mx.linkom.wifi_sanmateo.Menu implements Surf
     // String para la dirección MAC
     public static String address = null;*/
 
-    /*String i_id_residencial, i_id_visita, i_guardia_de_entrada, i_foto1, i_foto2, i_foto3, i_usuario, i_token, i_correo, i_visita, i_pluma_nombre, i_pluma_token, i_id_vigilante, i_id_pluma;
-    Date FechaA;
+    String i_id_residencial, i_id_visita, i_guardia_de_entrada, i_foto1, i_foto2, i_foto3, i_usuario, i_token, i_correo, i_visita, i_pluma_nombre, i_pluma_token, i_id_vigilante, i_id_pluma;
+    /*Date FechaA;
     String FechaC;*/
 
     private Handler handler;
@@ -143,39 +145,34 @@ public class CamaraActivity extends mx.linkom.wifi_sanmateo.Menu implements Surf
         setupSurfaceHolder();
         Visita();
 
-//        Intent intent = getIntent();
-//        i_id_residencial = intent.getStringExtra("id_residencial");
-//        i_id_visita = intent.getStringExtra("id_visita");
-//        i_guardia_de_entrada = intent.getStringExtra("guardia_de_entrada");
-//        i_foto1 = intent.getStringExtra("foto1");
-//        i_foto2 = intent.getStringExtra("foto2");
-//        i_foto3 = intent.getStringExtra("foto3");
-//        i_usuario = intent.getStringExtra("usuario");
-//        i_token = intent.getStringExtra("token");
-//        i_correo = intent.getStringExtra("correo");
-//        i_visita = intent.getStringExtra("visita");
-//        i_pluma_nombre = intent.getStringExtra("pluma_nombre");
-//        i_pluma_token = intent.getStringExtra("pluma_token");
-//        i_id_vigilante = intent.getStringExtra("id_vigilante");
-//        i_id_pluma = intent.getStringExtra("id_pluma");
-//
-//        if (i_id_residencial == null || i_id_visita == null || i_guardia_de_entrada == null) {
-//            Log.e("INTENT", "No se enviaron los datos");
-//            i_id_residencial = "";
-//            i_id_visita = "";
-//            i_guardia_de_entrada = "";
-//            i_foto1 = "";
-//            i_foto2 = "";
-//            i_foto3 = "";
-//            i_usuario = "";
-//            i_token = "";
-//            i_correo = "";
-//            i_visita = "";
-//            i_pluma_nombre = "";
-//            i_pluma_token = "";
-//            i_id_vigilante = "";
-//            i_id_pluma = "";
-//        }
+        Intent intent = getIntent();
+        i_id_residencial = intent.getStringExtra("id_residencial");
+        i_id_visita = intent.getStringExtra("id_visita");
+        i_guardia_de_entrada = intent.getStringExtra("guardia_de_entrada");
+        i_usuario = intent.getStringExtra("usuario");
+        i_token = intent.getStringExtra("token");
+        i_correo = intent.getStringExtra("correo");
+        i_visita = intent.getStringExtra("visita");
+        i_pluma_nombre = intent.getStringExtra("pluma_nombre");
+        i_pluma_token = intent.getStringExtra("pluma_token");
+        i_id_vigilante = intent.getStringExtra("id_vigilante");
+        i_id_pluma = intent.getStringExtra("id_pluma");
+
+        if (i_id_residencial == null || i_id_visita == null || i_guardia_de_entrada == null) {
+            Log.e("INTENT", "No se enviaron los datos");
+            Toast.makeText(this, "No se enviaron los datos", Toast.LENGTH_SHORT).show();
+            i_id_residencial = "";
+            i_id_visita = "";
+            i_guardia_de_entrada = "";
+            i_usuario = "";
+            i_token = "";
+            i_correo = "";
+            i_visita = "";
+            i_pluma_nombre = "";
+            i_pluma_token = "";
+            i_id_vigilante = "";
+            i_id_pluma = "";
+        }
 
         contador.setBackgroundResource(R.drawable.loading);
         frameAnimation = (AnimationDrawable) contador.getBackground();
@@ -222,7 +219,8 @@ public class CamaraActivity extends mx.linkom.wifi_sanmateo.Menu implements Surf
                         botonPresionado(siguiente, 0);
 
                         //Registrar_pluma();
-                        Registrar();
+                        //Registrar();
+                        esperarParaCambio3(8000);
                     }
                 }, 300);
 
@@ -488,7 +486,7 @@ public class CamaraActivity extends mx.linkom.wifi_sanmateo.Menu implements Surf
                         ja1 = new JSONArray(response);
                         Log.e("Visita", "LLega");
 
-                        //Solo ejecutar si el servicio no se esta ejecutando
+                        /*//Solo ejecutar si el servicio no se esta ejecutando
                         if (!servicioPlacas()) {
                             Toast.makeText(CamaraActivity.this, "El servicio de placas inicio", Toast.LENGTH_SHORT).show();
                             ArrayList<String> id = new ArrayList<String>();
@@ -502,7 +500,7 @@ public class CamaraActivity extends mx.linkom.wifi_sanmateo.Menu implements Surf
                             }
                         }else {
                             Toast.makeText(CamaraActivity.this, "El servici ode placas ya se esta ejecutando", Toast.LENGTH_SHORT).show();
-                        }
+                        }*/
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -556,7 +554,7 @@ public class CamaraActivity extends mx.linkom.wifi_sanmateo.Menu implements Surf
     }
 
     private void startCamera() {
-        camera = Camera.open(0);
+        camera = Camera.open(1);
         camera.setDisplayOrientation(0);
 
         try {
@@ -624,10 +622,23 @@ public class CamaraActivity extends mx.linkom.wifi_sanmateo.Menu implements Surf
             uri_img = FileProvider.getUriForFile(getApplicationContext(), getApplicationContext().getPackageName() + ".provider", foto);
 
             bitmap = BitmapFactory.decodeFile(getApplicationContext().getExternalFilesDir(null) + "/" + nombreFoto);
+
+            Bitmap foto2 = DetectarPlaca.fechaHoraFoto(bitmap);
+            FileOutputStream fos = null;
+
+            try {
+                fos = new FileOutputStream(rutaImagen);
+                foto2.compress(Bitmap.CompressFormat.JPEG, 100, fos); // compress and save as JPEG
+                fos.flush();
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             surfaceView.setVisibility(View.GONE);
             Botones.setVisibility(View.VISIBLE);
             view1.setVisibility(View.VISIBLE);
-            view1.setImageBitmap(bitmap);
+            view1.setImageBitmap(foto2);
 //                        Toast.makeText(CamaraActivity.this, "Picture Saved: " + "ine", Toast.LENGTH_LONG).show();
             //dato=0;
             //esperarParaCambio3(10000);
@@ -876,13 +887,76 @@ public class CamaraActivity extends mx.linkom.wifi_sanmateo.Menu implements Surf
 
     public void esperarParaCambio3(int milisegundos) {
 
+        mp3.stop();
 
-        han3.postDelayed(new Runnable() {
+        /*ContentValues val_img1 = ValuesImagen(nombreFoto, Conf.getPin().trim() + "/caseta/" + nombreFoto.trim(), rutaImagen);
+        Uri uri = getContentResolver().insert(UrisContentProvider.URI_CONTENIDO_FOTOS_OFFLINE, val_img1);
+        //upload();
+        //Solo ejecutar si el servicio no se esta ejecutando
+        if (!servicioFotos()) {
+            Intent cargarFotos = new Intent(CamaraActivity.this, subirFotos.class);
+            startService(cargarFotos);
+        }*/
+        /*mp.start();
+        pd.show();*/
+
+        Intent intent = new Intent(CamaraActivity.this, FotoPlaca.class);
+        try {
+            intent.putExtra("id_residencial", Conf.getResid().trim());
+            intent.putExtra("id_visita", ja1.getString(0).trim());
+            intent.putExtra("foto1", ja1.getString(0) + "_" + anio + mes + dia);
+            intent.putExtra("rutafoto1", rutaImagen);
+
+
+            intent.putExtra("guardia_de_entrada", i_guardia_de_entrada);
+            intent.putExtra("usuario", i_usuario);
+            intent.putExtra("token", i_token);
+            intent.putExtra("correo", i_correo);
+            intent.putExtra("visita", i_visita);
+            intent.putExtra("pluma_nombre", i_pluma_nombre);
+            intent.putExtra("pluma_token", i_pluma_token);
+
+
+            intent.putExtra("id_vigilante", i_id_vigilante);
+            intent.putExtra("id_pluma", i_id_pluma);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        startActivity(intent);
+
+        /*han3.postDelayed(new Runnable() {
             public void run() {
                 pd.dismiss();
+
+                Intent intent = new Intent(CamaraActivity.this, FotoPlaca.class);
+                try {
+                    intent.putExtra("id_residencial", Conf.getResid().trim());
+                    intent.putExtra("id_visita", ja1.getString(0).trim());
+                    intent.putExtra("foto1", ja1.getString(0) + "_" + anio + mes + dia);
+                    intent.putExtra("rutafoto1", rutaImagen);
+
+
+                    intent.putExtra("guardia_de_entrada", i_guardia_de_entrada);
+                    intent.putExtra("usuario", i_usuario);
+                    intent.putExtra("token", i_token);
+                    intent.putExtra("correo", i_correo);
+                    intent.putExtra("visita", i_visita);
+                    intent.putExtra("pluma_nombre", i_pluma_nombre);
+                    intent.putExtra("pluma_token", i_pluma_token);
+
+
+                    intent.putExtra("id_vigilante", i_id_vigilante);
+                    intent.putExtra("id_pluma", i_id_pluma);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                startActivity(intent);
+
+
+
                 //EnviarBT();
             }
-        }, milisegundos);
+        }, milisegundos);*/
     }
 
 //    public void EnviarBT2() {

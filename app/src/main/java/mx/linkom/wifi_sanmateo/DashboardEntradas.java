@@ -77,7 +77,7 @@ public class DashboardEntradas extends Menu implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboardentradas);
 
-        actualizarIP();
+        //actualizarIP();
 
         handler = new Handler();
 

@@ -141,6 +141,10 @@ public class AccesoRegistroActivity extends mx.linkom.wifi_sanmateo.Menu2 {
         Calle = (Spinner)findViewById(R.id.setCalle);
         Pasajeros = (Spinner)findViewById(R.id.setPasajeros);
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
         cargarSpinner2();
         calles();
         menu();

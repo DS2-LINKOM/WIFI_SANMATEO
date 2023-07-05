@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:background="@color/law_blanco"
     android:paddingRight="150dp"
@@ -13,7 +11,7 @@
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,8 +20,6 @@
             android:layout_gravity="center"
             android:layout_centerInParent="true"
             android:textAlignment="center"
-            android:layout_marginTop="50dp"
-            android:paddingTop="10dp"
             >
 
             <!--Menú-->
@@ -155,7 +151,6 @@
                 android:orientation="horizontal"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:paddingBottom="25dp"
                 android:layout_marginTop="15dp"
                 android:visibility="visible"
                 >
@@ -166,6 +161,7 @@
                     android:textColor="#27374A"
                     android:text="TOMAR FOTO"
                     android:textSize="30dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/law_LatoRegular"
                     android:textAllCaps="true"
                     android:visibility="visible"
@@ -186,14 +182,12 @@
                     android:textColor="#27374A"
                     android:text="REGISTRAR"
                     android:textSize="30dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/law_LatoRegular"
                     android:textAllCaps="true"
                     android:visibility="visible"
                     android:background="@drawable/ripple_effect"
                     />
-
-
-
 
             </LinearLayout>
 

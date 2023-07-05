@@ -32,6 +32,10 @@ public class BT_Conexion extends Menu {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cbta);
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
     }
 
     @Override

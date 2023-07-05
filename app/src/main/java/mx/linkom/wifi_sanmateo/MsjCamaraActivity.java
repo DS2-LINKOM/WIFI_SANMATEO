@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.Button;
 
 public class MsjCamaraActivity extends   Menu {
@@ -15,6 +16,11 @@ public class MsjCamaraActivity extends   Menu {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mesjcam);
+
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
         mp = MediaPlayer.create(this,R.raw.audio1_bienvenida);
 
 //        button = (Button)findViewById(R.id.button);

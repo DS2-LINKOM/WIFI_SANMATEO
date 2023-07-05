@@ -77,6 +77,10 @@ public class DashboardVigilante  extends Menu2 {
 
         nombreResi.setText("VIGILANTE: "+Conf.getNomResi());
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
         menu();
 
     }

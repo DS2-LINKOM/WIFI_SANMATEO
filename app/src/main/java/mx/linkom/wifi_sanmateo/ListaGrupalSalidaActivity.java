@@ -102,6 +102,10 @@ public class ListaGrupalSalidaActivity extends mx.linkom.wifi_sanmateo.Menu impl
             }
         });
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
         //SI ES ACEPTADO O DENEGAODO
         if(Conf.getST().equals("Aceptado")){
             rlVista.setVisibility(View.VISIBLE);

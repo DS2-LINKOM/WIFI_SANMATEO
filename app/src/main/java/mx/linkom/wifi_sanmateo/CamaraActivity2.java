@@ -119,6 +119,10 @@ public class CamaraActivity2 extends mx.linkom.wifi_sanmateo.Menu implements Sur
 
         scrollView = (ScrollView) findViewById(R.id.scrollView);
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
           /*btAdapter= BluetoothAdapter.getDefaultAdapter();
           VericaEstadoBT();*/
         tiempo2 = 4000;

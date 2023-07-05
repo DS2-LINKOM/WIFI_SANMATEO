@@ -65,6 +65,10 @@ public class EscaneoVisitaSalidaActivity extends mx.linkom.wifi_sanmateo.Menu im
 
         handler = new Handler();
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
         runnable = new Runnable() {
             @Override
             public void run() {

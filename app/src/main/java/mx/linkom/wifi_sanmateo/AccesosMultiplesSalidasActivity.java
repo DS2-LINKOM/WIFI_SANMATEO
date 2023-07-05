@@ -81,6 +81,10 @@ public class AccesosMultiplesSalidasActivity extends mx.linkom.wifi_sanmateo.Men
         tvMensaje = (TextView) findViewById(R.id.setMensaje);
         tvMensaje2 = (TextView) findViewById(R.id.setMensaje2);
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
 
         //SI ES ACEPTADO O DENEGAODO
         if (Conf.getST().equals("Aceptado")) {

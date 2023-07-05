@@ -84,6 +84,9 @@ public class PreEntradasActivity extends mx.linkom.wifi_sanmateo.Menu2 {
         setContentView(R.layout.activity_preentradas);
         Conf = new Configuracion(this);
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
 
         storage= FirebaseStorage.getInstance();
         storageReference=storage.getReference();

@@ -35,6 +35,10 @@ public class BT_Conexion2 extends Menu {
         setContentView(R.layout.activity_cbta);
         Conf = new Configuracion(this);
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
     }
 
     @Override

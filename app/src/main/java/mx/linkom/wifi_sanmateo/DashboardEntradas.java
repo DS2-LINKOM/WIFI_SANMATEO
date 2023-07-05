@@ -1,6 +1,7 @@
 package mx.linkom.wifi_sanmateo;
 
 import android.content.Intent;
+import android.media.AudioManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
@@ -72,9 +75,11 @@ public class DashboardEntradas extends Menu implements View.OnClickListener {
 
     private objectDetectorClass objectDetectorClass;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_dashboardentradas);
 
         //actualizarIP();
@@ -101,6 +106,10 @@ public class DashboardEntradas extends Menu implements View.OnClickListener {
         } catch (IOException e) {
             Log.e("MainActivity", "Error al cargar modelo");
         }
+
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
 
         fAuth = FirebaseAuth.getInstance();
         Conf = new Configuracion(this);

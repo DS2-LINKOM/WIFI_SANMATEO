@@ -79,6 +79,9 @@ public class DashboardSalidas extends Menu implements View.OnClickListener {
         nombreResi.setText("SALIDAS " + Conf.getNomResi() + " : " + Conf.getNombre());
         alerta2.setText("¡ " + Conf.getNomResi() + " Agradece su visita !");
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
 
         menu();
         button.setOnClickListener(new View.OnClickListener() {

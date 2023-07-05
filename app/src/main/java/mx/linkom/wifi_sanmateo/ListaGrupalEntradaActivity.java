@@ -77,6 +77,10 @@ public class ListaGrupalEntradaActivity extends mx.linkom.wifi_sanmateo.Menu imp
 
         scrollView = (ScrollView) findViewById(R.id.scrollView);
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
         mp = MediaPlayer.create(this,R.raw.audio9_visitasnombres);
         mp.start();
         rlVista = (LinearLayout) findViewById(R.id.rlVista);

@@ -44,6 +44,10 @@ public class RegistroPlumasEntradasActivity extends mx.linkom.wifi_sanmateo.Menu
         setContentView(R.layout.activity_registroplumasentradas);
         Conf = new Configuracion(this);
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
         nombre = (TextView) findViewById(R.id.nombre);
         pluma = (TextView) findViewById(R.id.setPluma);
         usuario = (TextView) findViewById(R.id.setNombre);

@@ -76,6 +76,9 @@ public class AccesoAutosActivity extends Menu {
         rlPermitido = (LinearLayout) findViewById(R.id.rlPermitido);
         rlDenegado = (LinearLayout) findViewById(R.id.rlDenegado);
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
 
         //SI ES ACEPTADO O DENEGAODO
         if(Conf.getST().equals("Aceptado")){

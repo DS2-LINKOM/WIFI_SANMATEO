@@ -35,6 +35,10 @@ public class EntradasActivity extends mx.linkom.wifi_sanmateo.Menu2{
         setContentView(R.layout.activity_entradas);
         Conf = new Configuracion(this);
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
         Placas = (EditText) findViewById(R.id.editText1);
         Registro = (Button) findViewById(R.id.btnBuscar1);
         Registro.setOnClickListener(new View.OnClickListener() {

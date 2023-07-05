@@ -3,6 +3,7 @@ package mx.linkom.wifi_sanmateo;
 import static android.view.View.GONE;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
@@ -19,17 +20,22 @@ import android.graphics.drawable.AnimationDrawable;
 import android.media.ExifInterface;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -60,7 +66,7 @@ import mx.linkom.wifi_sanmateo.deteccionPlacas.objectDetectorClass;
 import mx.linkom.wifi_sanmateo.fotosSegundoPlano.UrisContentProvider;
 import mx.linkom.wifi_sanmateo.fotosSegundoPlano.subirFotos;
 
-public class FotoPlaca extends AppCompatActivity {
+public class FotoPlaca extends mx.linkom.wifi_sanmateo.Menu implements  View.OnClickListener {
 
     Button btnTomarFoto, btnRegistrar;
     String nombreImagen1, rutaImagen1;
@@ -77,6 +83,10 @@ public class FotoPlaca extends AppCompatActivity {
     String intent_id_residencial, intent_id_visita, intent_foto, intent_ruta_foto, intent_guardia_de_entrada, intent_usuario, intent_token, intent_correo, intent_visita, intent_pluma_nombre, intent_pluma_token, intent_id_vigilante, intent_id_pluma;
     Date FechaA;
     String FechaC;
+
+    private Handler handler;
+    private Runnable runnable;
+    ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +105,24 @@ public class FotoPlaca extends AppCompatActivity {
         pd = new ProgressDialog(this);
         pd.setMessage("Registrando...");
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
         //han3 = new Handler();
+
+        handler = new Handler();
+
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                // Handle idle time here
+                Intent intent = new Intent(FotoPlaca.this, ProtectorPantalla.class);
+                startActivity(intent);
+            }
+        };
+
+        scrollView = (ScrollView) findViewById(R.id.scrollView);
 
         botonPresionado(btnRegistrar, 0);
 
@@ -171,6 +198,63 @@ public class FotoPlaca extends AppCompatActivity {
             Toast.makeText(this, "No se enviaron los datos", Toast.LENGTH_SHORT).show();
         }
 
+        ViewTreeObserver.OnScrollChangedListener scrollChangedListener = new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+                int scrollY = scrollView.getScrollY();
+                // El valor de scrollY indica la posición vertical actual de la vista de desplazamiento
+                // Puedes hacer algo aquí en función de la posición de desplazamiento
+                Log.e("EVENT", "-_- Entradas Scroll");
+                handler.removeCallbacks(runnable); // Reset the delay timer
+                handler.postDelayed(runnable, Global.getTiemempoBloqueo()); // Set the delay to 5 seconds
+            }
+        };
+        scrollView.getViewTreeObserver().addOnScrollChangedListener(scrollChangedListener);
+
+        View layout = findViewById(android.R.id.content);
+        layout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                Log.e("EVENT", "-_-");
+                handler.removeCallbacks(runnable); // Reset the delay timer
+                handler.postDelayed(runnable, Global.getTiemempoBloqueo()); // Set the delay to 5 seconds
+                return false;
+            }
+        });
+
+
+        // Get the view that you want to simulate a touch event for
+        View view = layout;
+
+        // Create a new MotionEvent object for the touch event
+        long downTime = SystemClock.uptimeMillis();
+        long eventTime = SystemClock.uptimeMillis() + 100;
+        int action = MotionEvent.ACTION_DOWN;
+        float x = view.getWidth() / 2f;
+        float y = view.getHeight() / 2f;
+        int metaState = 0;
+        MotionEvent motionEvent = MotionEvent.obtain(
+                downTime, eventTime, action, x, y, metaState
+        );
+
+        // Dispatch the touch event to the view
+        view.dispatchTouchEvent(motionEvent);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        // Handle click events here
+        Log.e("EVENT", "-_- Entradas");
+        handler.removeCallbacks(runnable); // Reset the delay timer
+        handler.postDelayed(runnable, Global.getTiemempoBloqueo()); // Set the delay to 5 seconds
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        handler.removeCallbacks(runnable); // Reset the delay timer
+        Log.e("CICLO", "onStop");
     }
 
     //ALETORIO
@@ -229,6 +313,7 @@ public class FotoPlaca extends AppCompatActivity {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

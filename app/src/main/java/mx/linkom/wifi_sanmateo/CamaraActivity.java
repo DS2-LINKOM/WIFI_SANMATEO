@@ -11,6 +11,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.hardware.Camera;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -28,6 +29,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.content.FileProvider;
 
 import com.android.volley.AuthFailureError;
@@ -119,6 +121,10 @@ public class CamaraActivity extends mx.linkom.wifi_sanmateo.Menu implements Surf
         };
 
         scrollView = (ScrollView) findViewById(R.id.scrollView);
+
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
 
         han3 = new Handler();
 
@@ -599,6 +605,7 @@ public class CamaraActivity extends mx.linkom.wifi_sanmateo.Menu implements Surf
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onPictureTaken(byte[] bytes, Camera camera) {
         try {
@@ -609,6 +616,7 @@ public class CamaraActivity extends mx.linkom.wifi_sanmateo.Menu implements Surf
         resetCamera();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void saveImage(byte[] bytes) throws IOException {
         FileOutputStream outStream;
         try {

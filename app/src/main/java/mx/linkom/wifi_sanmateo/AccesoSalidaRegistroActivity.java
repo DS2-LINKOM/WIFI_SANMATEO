@@ -97,6 +97,10 @@ public class AccesoSalidaRegistroActivity extends mx.linkom.wifi_sanmateo.Menu2{
         Placas = (TextView)findViewById(R.id.setPlacas);
         Tipo = (TextView)findViewById(R.id.setTipo);
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
         Registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

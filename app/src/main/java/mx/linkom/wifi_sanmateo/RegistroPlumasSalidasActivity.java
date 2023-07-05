@@ -41,6 +41,11 @@ public class RegistroPlumasSalidasActivity extends mx.linkom.wifi_sanmateo.Menu2
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registroplumassalidas);
+
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
         Conf = new Configuracion(this);
         nombre = (TextView) findViewById(R.id.nombre);
         pluma = (TextView) findViewById(R.id.setPluma);

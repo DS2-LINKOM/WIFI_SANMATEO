@@ -54,6 +54,10 @@ public class Dashboard extends   mx.linkom.wifi_sanmateo.Menu2 {
         gridList2 = (GridView)findViewById(R.id.gridList2);
         gridList3 = (GridView)findViewById(R.id.gridList3);
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
 
     }
 

@@ -39,6 +39,10 @@ public class SalidasActivity extends mx.linkom.wifi_sanmateo.Menu2{
         editText1 = (EditText) findViewById(R.id.editText1);
         Conf = new Configuracion(this);
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
         btnBuscar1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

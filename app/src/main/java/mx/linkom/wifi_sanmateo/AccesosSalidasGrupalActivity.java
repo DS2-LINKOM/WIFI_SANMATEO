@@ -74,6 +74,10 @@ public class AccesosSalidasGrupalActivity extends Menu {
         mp = MediaPlayer.create(this, R.raw.audio7_graciassalida);
         mp2 = MediaPlayer.create(this, R.raw.audio3_qrnovalido);
 
+        Global.ocultarBarrasNavegacionEstado(this);
+        Global.aumentarVolumen(this);
+        Global.evitarSuspenderPantalla(this);
+
         //SI ES ACEPTADO O DENEGAODO
         if (Conf.getST().equals("Aceptado")) {
             rlVista.setVisibility(View.VISIBLE);

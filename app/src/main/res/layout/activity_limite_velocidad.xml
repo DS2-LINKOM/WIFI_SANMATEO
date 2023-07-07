@@ -63,12 +63,23 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:fontFamily="@font/law_LatoBold"
+                android:layout_weight="1"
                 android:textStyle="bold"
                 android:text="FAVOR DE RESPETAR LOS LÍMITES DE VELOCIDAD"
                 android:textColor="@color/law_azul"
                 android:textAlignment="center"
                 android:textSize="35dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
 
         </LinearLayout>
 
